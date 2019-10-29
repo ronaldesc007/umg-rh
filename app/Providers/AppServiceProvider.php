@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 /**
  * Class AppServiceProvider.
@@ -89,5 +90,8 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'crear',
             'edit' => 'editar',
         ]);
+
+        Schema::defaultStringLength(250);
+
     }
 }
