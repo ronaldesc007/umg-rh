@@ -1,5 +1,5 @@
 ---
 deployment:
  tasks:
- - export DEPLOYPATH=/home/user/public_html/umg-rh/
+ - export DEPLOYPATH=/home/n5ps18f8bswc/public_html/umg-rh/
  - /bin/cp -r * $DEPLOYPATH
