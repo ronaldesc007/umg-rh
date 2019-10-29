@@ -46,7 +46,7 @@
      * // Footer options
      * 1. '.footer-fixed'					- Fixed footer
 --}}
-<body class="app header-fixed sidebar-fixed aside-menu-off-canvas sidebar-lg-show">
+<body class="app header-fixed sidebar-fixed aside-menu-off-canvas sidebar-compact">
     @include('backend.includes.header')
 
     <div class="app-body">
@@ -55,7 +55,6 @@
         <main class="main">
             @include('includes.partials.read-only')
             @include('includes.partials.logged-in-as')
-            {!! Breadcrumbs::render() !!}
 
             <div class="container-fluid">
                 <div class="animated fadeIn">
@@ -64,7 +63,10 @@
                     </div><!--content-header-->
 
                     @include('includes.partials.messages')
-                    @yield('content')
+                    
+                    <div class="col-lg-10 offset-lg-1 mt-4">
+                        @yield('content')
+                    </div>    
                 </div><!--animated-->
             </div><!--container-fluid-->
         </main><!--main-->

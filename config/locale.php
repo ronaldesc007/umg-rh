@@ -7,7 +7,7 @@ return [
      *
      * @var bool
      */
-    'status' => true,
+    'status' => env('LANG_BAR', 'false'),
 
     /*
      * Available languages

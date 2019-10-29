@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <a href="{{ route('frontend.index') }}" class="navbar-brand">{{ app_name() }}</a>
+    <a href="{{ route('frontend.index') }}" class="navbar-brand">
+        <img class="navbar-brand-full" src="{{ asset('img/backend/brand/GestionRHLogo.png') }}" width="89" height="25" alt="GestiónRH">        
+    </a>
 
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('labels.general.toggle_navigation')">
         <span class="navbar-toggler-icon"></span>
@@ -41,8 +43,11 @@
                     </div>
                 </li>
             @endguest
-
+                
+            @if(config('access.contact'))
             <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link {{ active_class(Route::is('frontend.contact')) }}">@lang('navs.frontend.contact')</a></li>
+            @endif
+            
         </ul>
     </div>
 </nav>

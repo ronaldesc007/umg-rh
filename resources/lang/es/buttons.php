@@ -40,6 +40,7 @@ return [
     'general' => [
         'cancel' => 'Cancelar',
         'continue' => 'Continuar',
+        'back' => 'Regresar',
 
         'crud' => [
             'create' => 'Crear',

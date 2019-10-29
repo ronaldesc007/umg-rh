@@ -12,6 +12,9 @@ return [
     // Whether or not registration is enabled
     'registration' => env('ENABLE_REGISTRATION', true),
 
+    // Whether or not contact is enabled
+    'contact' => env('ENABLE_CONTACT', true),
+
     // Configurations for the user
     'users' => [
         // Whether or not the user has to confirm their email when signing up
