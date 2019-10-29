@@ -16,6 +16,7 @@ return [
         'all' => 'Todos',
         'yes' => 'Sí',
         'no' => 'No',
+        'total_records' => 'Total de Registros',
         'copyright' => 'Copyright',
         'custom' => 'Personalizado',
         'actions' => 'Acciones',

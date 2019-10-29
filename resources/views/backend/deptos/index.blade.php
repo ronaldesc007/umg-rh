@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-7">
                 <div class="float-left">
-                    {!! $deptos->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $deptos->total()) }}
+                    {{ trans_choice('labels.general.total_records', $deptos->total()) }} {!! $deptos->total() !!}
                 </div>
             </div><!--col-->
 
