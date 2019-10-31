@@ -91,7 +91,8 @@ class AppServiceProvider extends ServiceProvider
             'edit' => 'editar',
         ]);
 
-        Schema::defaultStringLength(250);
+        Schema::defaultStringLength(191);
+        // to fix the issue with mysql <5.7
 
     }
 }

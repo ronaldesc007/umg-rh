@@ -15,7 +15,14 @@ class CreateCandidatosTable extends Migration
     {
         Schema::create('candidatos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('puesto');
+            $table->unsignedBigInteger('empleado');
             $table->timestamps();
+        });
+
+        Schema::table('candidatos', function (Blueprint $table) {
+            $table->foreign('puesto')->references('id')->on('puestos');
+            $table->foreign('empleado')->references('id')->on('empleados');
         });
     }
 

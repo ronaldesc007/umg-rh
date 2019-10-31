@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AuthTableSeeder::class);
+        
+        $this->call(LocationsTableSeeder::class);
+        $this->command->info('Master Locations, Locations and SubLocations tables seeded!');
 
         Model::reguard();
     }

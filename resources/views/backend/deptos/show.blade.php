@@ -50,9 +50,8 @@
                         {{ html()->label('Descripción')->class('col-md-2 form-control-label font-weight-bold')->for('last_name') }}
 
                             <div class="col-md-10">
-                                {{ html()->text('descripcion_depto')
+                                {{ html()->span($depto->descripcion_depto)
                                     ->class('form-control-plaintext')
-                                    ->disabled()
                                      }}
                             </div><!--col-->
                         </div><!--form-group-->

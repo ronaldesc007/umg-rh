@@ -85,11 +85,10 @@ class DeptosController extends Controller
      * @param  \App\DeptoModel  $deptoModel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DeptoModel $depto) //using Route Model Binding - Implicit
     {   
-        $deptoModel = DeptoModel::findorFail($id);
         return view('backend.deptos.show')
-            ->withDepto($deptoModel);
+            ->withDepto($depto);
     }
 
     /**
@@ -98,10 +97,10 @@ class DeptosController extends Controller
      * @param  \App\DeptoModel  $deptoModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(DeptoModel $deptoModel)
+    public function edit(DeptoModel $depto)
     {
         return view('backend.deptos.edit')
-            ->withDepto($deptoModel);
+            ->withDepto($depto);
     }
 
     /**
@@ -159,9 +158,8 @@ class DeptosController extends Controller
      * @param  \App\DeptoModel  $deptoModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeptoModel $depto)
     {
-        $depto = DeptoModel::findorFail($id);
         $deptonombre = $depto->nombre_depto;
         $depto->delete();                
         Log::info('Se ha eliminado el departamento: '.$deptonombre);

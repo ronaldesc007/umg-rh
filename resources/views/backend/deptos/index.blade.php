@@ -41,7 +41,7 @@
                                 <td>##</td>
                                 <td>##</td>
                                 <td>{{ $depto->updated_at->diffForHumans() }}</td>
-                                <td>@include('backend.deptos.includes.actions', ['user' => $depto])</td>
+                                <td>@include('backend.deptos.includes.actions', ['depto' => $depto])</td>
                             </tr>
                         @endforeach
                         </tbody>

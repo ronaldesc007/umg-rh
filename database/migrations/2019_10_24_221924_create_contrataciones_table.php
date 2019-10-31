@@ -15,8 +15,18 @@ class CreateContratacionesTable extends Migration
     {
         Schema::create('contrataciones', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('puesto');
+            $table->unsignedBigInteger('empleado');
+            $table->string('etapa_cont');
+            $table->date('fecha_inicio_cont');
+            $table->date('fecha_fin_cont');
             $table->timestamps();
         });
+
+        Schema::table('contrataciones', function (Blueprint $table) {
+            $table->foreign('puesto')->references('id')->on('puestos');
+            $table->foreign('empleado')->references('id')->on('empleados');
+        });    
     }
 
     /**
