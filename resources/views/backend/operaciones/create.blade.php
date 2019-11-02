@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            Operaciones <small class="text-muted">Calculo Indemnización</small>
+                            Operaciones <small class="text-muted">Calculo Indemnización (EN CONSTRUCCIÓN)</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->

@@ -25,9 +25,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre del Departamento</th>
-                            <th>Jefe del Departamento</th>          
-                            <th># de Empleados</th>
-                            <th># de Puestos Vacantes</th>
+                            <th>Jefe del Departamento</th>   
                             <th>Fecha Modificación</th>
                             <th>@lang('labels.general.actions')</th>
                         </tr>
@@ -38,8 +36,6 @@
                                 <td>{{ $depto->id }}</td>
                                 <td>{{ $depto->nombre_depto }}</td>
                                 <td>{{ $depto->encargado_depto }}</td>
-                                <td>##</td>
-                                <td>##</td>
                                 <td>{{ $depto->updated_at->diffForHumans() }}</td>
                                 <td>@include('backend.deptos.includes.actions', ['depto' => $depto])</td>
                             </tr>
