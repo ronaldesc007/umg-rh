@@ -54,6 +54,7 @@ class PuestosController extends Controller
             'salario_puesto' => 'required',
             'depto_puesto' => 'required',
             'descripcion_puesto' => 'required',
+            'funciones_puesto' => 'required',
         ];
 
         $Input = $request->all();

@@ -19,13 +19,13 @@ class CreatePuestosTable extends Migration
             $table->string('codigo_puesto',10);
             $table->integer('area_puesto');
             $table->unsignedBigInteger('depto_puesto');
-            $table->text('descripcion_puesto');
-            $table->text('funciones_puesto');
-            $table->text('competencias_puesto');
-            $table->text('formacion_puesto');
-            $table->text('experiencia_puesto');
-            $table->decimal('salario_puesto', 9, 2);
-            $table->text('comentarios_puesto');
+            $table->text('descripcion_puesto')->nullable();
+            $table->text('funciones_puesto')->nullable();
+            $table->text('competencias_puesto')->nullable();
+            $table->text('formacion_puesto')->nullable();
+            $table->text('experiencia_puesto')->nullable();
+            $table->decimal('salario_puesto', 9, 2)->nullable();
+            $table->text('comentarios_puesto')->nullable();
             $table->timestamps();
         });
 

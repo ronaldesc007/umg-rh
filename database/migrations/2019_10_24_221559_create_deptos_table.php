@@ -16,9 +16,9 @@ class CreateDeptosTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre_depto');
-            $table->string('codigo_depto',10);
-            $table->unsignedBigInteger('encargado_depto');
-            $table->text('descripcion_depto');
+            $table->string('codigo_depto',10)->nullable();
+            $table->unsignedBigInteger('encargado_depto')->nullable();
+            $table->text('descripcion_depto')->nullable();
             $table->timestamps();
         });
     }

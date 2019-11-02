@@ -17,9 +17,9 @@ class CreateContratacionesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('puesto');
             $table->unsignedBigInteger('empleado');
-            $table->integer('etapa_cont');
-            $table->date('fecha_inicio_cont');
-            $table->date('fecha_fin_cont');
+            $table->integer('etapa_cont')->nullable();
+            $table->date('fecha_inicio_cont')->nullable();
+            $table->date('fecha_fin_cont')->nullable();
             $table->timestamps();
         });
 
