@@ -49,7 +49,7 @@
                             {{ html()->label('Experiencia')->class('col-md-2 form-control-label font-weight-bold')->for('experiencia_puesto') }}
     
                                 <div class="col-md-4">
-                                    {{ html()->span('experiencia_puesto')
+                                    {{ html()->span($puesto->experiencia_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
@@ -77,7 +77,7 @@
                             {{ html()->label('Descripción')->class('col-md-2 form-control-label font-weight-bold')->for('descripcion_puesto') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->span('descripcion_puesto')
+                                    {{ html()->span($puesto->descripcion_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                          </div><!--form-group-->
@@ -86,7 +86,7 @@
                             {{ html()->label('Funciones')->class('col-md-2 form-control-label font-weight-bold')->for('funciones_puesto') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->span('funciones_puesto')
+                                    {{ html()->span($puesto->funciones_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
@@ -95,7 +95,7 @@
                             {{ html()->label('Competencias')->class('col-md-2 form-control-label font-weight-bold')->for('competencias_puesto') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->span('competencias_puesto')
+                                    {{ html()->span($puesto->competencias_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
@@ -104,7 +104,7 @@
                             {{ html()->label('Formación')->class('col-md-2 form-control-label font-weight-bold')->for('formacion_puesto') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->span('formacion_puesto')
+                                    {{ html()->span($puesto->formacion_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
@@ -113,7 +113,7 @@
                             {{ html()->label('Comentarios')->class('col-md-2 form-control-label font-weight-bold')->for('comentarios_puesto') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->span('comentarios_puesto')
+                                    {{ html()->span($puesto->comentarios_puesto)
                                         ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
@@ -125,7 +125,7 @@
             <div class="card-footer clearfix">
                 <div class="row">
                     <div class="col">
-                        {{ form_cancel(route('admin.puestos.index'), __('buttons.general.back'),'btn btn-danger btn-lg font-weight-bold') }}
+                        {{ form_cancel(route('admin.puestos.index'), __('buttons.general.back'),'btn btn-warning btn-lg font-weight-bold') }}
                     </div><!--col-->
 
                     <!--col-->

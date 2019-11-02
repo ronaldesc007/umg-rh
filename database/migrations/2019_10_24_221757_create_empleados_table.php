@@ -15,25 +15,25 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id');            
-            $table->string('primer_nombre_emp');
-            $table->string('segundo_nombre_emp');
-            $table->string('primer_apellido_emp');
-            $table->string('segundo_apellido_emp');
-            $table->integer('genero_emp');
-            $table->date('fecha_nacimiento_emp');
-            $table->integer('estado_civil_emp');
-            $table->string('direccion_emp');
-            $table->string('direccion_adicional_emp');
-            $table->string('telefono_emp');
-            $table->string('celular_emp');
-            $table->string('email_emp');
-            $table->text('comentarios_emp');
-            $table->text('cv_emp');
-            $table->text('foto_emp');
-            $table->unsignedBigInteger('puesto_emp');
-            $table->unsignedBigInteger('master_location');
-            $table->unsignedBigInteger('location');
-            $table->unsignedBigInteger('sub_location');
+            $table->string('primer_nombre_emp')->nullable();
+            $table->string('segundo_nombre_emp')->nullable();
+            $table->string('primer_apellido_emp')->nullable();
+            $table->string('segundo_apellido_emp')->nullable();
+            $table->integer('genero_emp')->nullable();
+            $table->date('fecha_nacimiento_emp')->nullable();
+            $table->integer('estado_civil_emp')->nullable();
+            $table->string('direccion_emp')->nullable();
+            $table->string('direccion_adicional_emp')->nullable();
+            $table->string('telefono_emp')->nullable();
+            $table->string('celular_emp')->nullable();
+            $table->string('email_emp')->nullable();
+            $table->text('comentarios_emp')->nullable();
+            $table->text('cv_emp')->nullable();
+            $table->text('foto_emp')->nullable();
+            $table->unsignedBigInteger('puesto_emp')->nullable();
+            $table->unsignedBigInteger('master_location')->nullable();
+            $table->unsignedBigInteger('location')->nullable();
+            $table->unsignedBigInteger('sub_location')->nullable();
             $table->timestamps();
         });
 

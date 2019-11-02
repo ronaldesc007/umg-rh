@@ -69,28 +69,28 @@ class PuestosController extends Controller
         DB::beginTransaction();
 
         // store
-        $edit_puesto = new PuestoModel;
-        $edit_puesto->nombre_puesto = $request->nombre_puesto;
-        $edit_puesto->codigo_puesto = $request->codigo_puesto;
-        $edit_puesto->area_puesto = $request->area_puesto;
-        $edit_puesto->depto_puesto = $request->depto_puesto;
-        $edit_puesto->descripcion_puesto = $request->descripcion_puesto;
-        $edit_puesto->funciones_puesto = $request->funciones_puesto;
-        $edit_puesto->competencias_puesto = $request->competencias_puesto;
-        $edit_puesto->formacion_puesto = $request->formacion_puesto;
-        $edit_puesto->experiencia_puesto = $request->experiencia_puesto;
-        $edit_puesto->salario_puesto = $request->salario_puesto;
-        $edit_puesto->comentarios_puesto = $request->comentarios_puesto;
-        $edit_puesto->save();
+        $new_puesto = new PuestoModel;
+        $new_puesto->nombre_puesto = $request->nombre_puesto;
+        $new_puesto->codigo_puesto = $request->codigo_puesto;
+        $new_puesto->area_puesto = $request->area_puesto;
+        $new_puesto->depto_puesto = $request->depto_puesto;
+        $new_puesto->descripcion_puesto = $request->descripcion_puesto;
+        $new_puesto->funciones_puesto = $request->funciones_puesto;
+        $new_puesto->competencias_puesto = $request->competencias_puesto;
+        $new_puesto->formacion_puesto = $request->formacion_puesto;
+        $new_puesto->experiencia_puesto = $request->experiencia_puesto;
+        $new_puesto->salario_puesto = $request->salario_puesto;
+        $new_puesto->comentarios_puesto = $request->comentarios_puesto;
+        $new_puesto->save();
 
-        if (! $edit_puesto) {
+        if (! $new_puesto) {
             DB::rollback(); //Rollback Transaction
             return Redirect::back()->withInput()->withFlashDanger('DB::Error');
         }
         
         DB::commit(); // Commit if no error
         
-        Log::info('Se ha creado el siguiente nuevo departamento: '.$edit_puesto->nombre_puesto);
+        Log::info('Se ha creado el siguiente nuevo departamento: '.$new_puesto->nombre_puesto);
         
         return Redirect::route('admin.puestos.index')
             ->withFlashInfo('Nuevo Puesto Agregado');        
