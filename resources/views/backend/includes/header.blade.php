@@ -17,7 +17,7 @@
         </li>
 
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">Contenido</a>
+            <a class="nav-link" href="{{ route('admin.contenido') }}">Contenido Proyecto</a>
         </li>
 
         @if(config('locale.status') && count(config('locale.languages')) > 1)

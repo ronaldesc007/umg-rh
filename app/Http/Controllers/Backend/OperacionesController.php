@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\OperacionModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator, DB, Log, Redirect;
+use App\EmpleadoModel;
+use App\PuestoModel;
+use App\ListadosModel;
+use App\DeptoModel;
+use App\ContratacionModel;
 
 class OperacionesController extends Controller
 {
@@ -25,7 +31,7 @@ class OperacionesController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -56,9 +62,14 @@ class OperacionesController extends Controller
      * @param  \App\OperacionModel  $operacionModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(OperacionModel $operacionModel)
+    public function edit($id)
     {
-        //
+        $empleado = EmpleadoModel::find($id);
+        $puesto  = PuestoModel::find($empleado->puesto_emp);
+        
+        return view('backend.operaciones.create')
+            ->withEmpleado($empleado)
+            ->withPuesto($puesto);
     }
 
     /**

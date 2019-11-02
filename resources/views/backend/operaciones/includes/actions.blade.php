@@ -10,11 +10,6 @@
         <a href="{{ route('admin.contratacion.baja', $empleado) }}" data-toggle="tooltip" data-placement="top" title="Dar de Baja" class="btn btn-danger">
             <i class="fas fa-project-diagram"></i>
         </a>
-
-        <a href="{{ route('admin.operacion.edit', $empleado) }}" data-toggle="tooltip" data-placement="top" title="Calcular" class="btn btn-warning">
-            <i class="fas fa-money-check-alt"></i>
-        </a>
-
     @endif
     
     <a href="{{ route('admin.personal.show', $empleado) }}" data-toggle="tooltip" data-placement="top" title="@lang('buttons.general.crud.view')" class="btn btn-info">

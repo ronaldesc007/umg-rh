@@ -16,3 +16,4 @@ Route::resources([
 Route::get('baja/{empleado}', 'ContratacionesController@baja')->name('contratacion.baja');
 Route::patch('confirmar-baja/{empleado}', 'ContratacionesController@confirmar_baja')->name('contratacion.confirmar-baja');
 Route::get('iniciar/{empleado}', 'ContratacionesController@iniciar')->name('contratacion.iniciar');
+Route::view('contenido', 'backend.contenido')->name('contenido');
