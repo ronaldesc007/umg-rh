@@ -13,6 +13,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.contenido') }}">
+                    <i class="nav-icon fas fa-address-book"></i>
+                    Detalles Proyecto
+                </a>
+            </li>
+
             @if ($logged_in_user->isAdmin())
                 <li class="nav-title">
                     @lang('menus.backend.sidebar.system')

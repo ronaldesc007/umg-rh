@@ -56,7 +56,7 @@
             @include('includes.partials.read-only')
             @include('includes.partials.logged-in-as')
 
-            <div class="container-fluid">
+            <div class="container-fluid p-0">
                 <div class="animated fadeIn">
                     <div class="content-header">
                         @yield('page-header')
