@@ -11,27 +11,83 @@ class ListadosModel extends Model
      * @return collection
      */
 
-    public static function Depto_Area()
+    public static function Puesto_Area()
     {
-        $collection = collect(['Administrativa', 'Operativa']);
+        $collection = collect([
+            [
+                'id' => '1',
+                'option' => 'Administrativa'
+            ],
+            [
+                'id' => '2',
+                'option' => 'Operativa'
+            ]
+        ]);
         return $collection;
     }
 
     public static function Generos()
     {
-        $collection = collect(['Masculino', 'Femenino']);
+        $collection = collect([
+            [
+                'id' => '1',
+                'option' => 'Masculino'
+            ],
+            [
+                'id' => '2',
+                'option' => 'Femenino'
+            ]
+        ]);
         return $collection;
     }
 
     public static function Estado_Civil()
     {
-        $collection = collect(['Soltero', 'Casado', 'Unido']);
+        $collection = collect([
+            [
+                'id' => '1',
+                'option' => 'Soltero'
+            ],
+            [
+                'id' => '2',
+                'option' => 'Casado'
+            ],
+            [
+                'id' => '3',
+                'option' => 'Unido'
+            ]
+        ]);
         return $collection;
     }
 
     public static function Proceso_Contratacion()
     {
-        $collection = collect(['Reclutamiento', 'Selección', 'Evaluación', 'Entrevista', 'Contratación', 'No Contratación']);
+        $collection = collect([
+            [
+                'id' => '1',
+                'option' => 'Reclutamiento'
+            ],
+            [
+                'id' => '2',
+                'option' => 'Selección'
+            ],
+            [
+                'id' => '3',
+                'option' => 'Evaluación'
+            ],
+            [
+                'id' => '4',
+                'option' => 'Entrevista'
+            ],
+            [
+                'id' => '5',
+                'option' => 'Contratación'
+            ],
+            [
+                'id' => '6',
+                'option' => 'No Contratación'
+            ]
+        ]);
         return $collection;
     }
 

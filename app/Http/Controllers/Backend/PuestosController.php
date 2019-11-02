@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\PuestoModel;
+use App\ListadosModel;
+use App\DeptoModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator, DB, Log, Redirect;
 
 class PuestosController extends Controller
 {
@@ -27,7 +30,12 @@ class PuestosController extends Controller
      */
     public function create()
     {
-        //
+        $areas  = ListadosModel::Puesto_Area()->pluck('option','id');
+        $deptos = DeptoModel::pluck('nombre_depto','id');
+
+        return view('backend.puestos.create')
+            ->withDeptos($deptos)
+            ->withAreas($areas);
     }
 
     /**
@@ -37,8 +45,55 @@ class PuestosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        // validate
+        $rules = [
+            'nombre_puesto' => 'required',
+            'codigo_puesto' => 'required',
+            'experiencia_puesto' => 'required',
+            'salario_puesto' => 'required',
+            'depto_puesto' => 'required',
+            'descripcion_puesto' => 'required',
+        ];
+
+        $Input = $request->all();
+        $validator = Validator::make($Input, $rules);
+
+        // process the store
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)->withInput();
+        }
+        
+         // Start transaction!
+        DB::beginTransaction();
+
+        // store
+        $edit_puesto = new PuestoModel;
+        $edit_puesto->nombre_puesto = $request->nombre_puesto;
+        $edit_puesto->codigo_puesto = $request->codigo_puesto;
+        $edit_puesto->area_puesto = $request->area_puesto;
+        $edit_puesto->depto_puesto = $request->depto_puesto;
+        $edit_puesto->descripcion_puesto = $request->descripcion_puesto;
+        $edit_puesto->funciones_puesto = $request->funciones_puesto;
+        $edit_puesto->competencias_puesto = $request->competencias_puesto;
+        $edit_puesto->formacion_puesto = $request->formacion_puesto;
+        $edit_puesto->experiencia_puesto = $request->experiencia_puesto;
+        $edit_puesto->salario_puesto = $request->salario_puesto;
+        $edit_puesto->comentarios_puesto = $request->comentarios_puesto;
+        $edit_puesto->save();
+
+        if (! $edit_puesto) {
+            DB::rollback(); //Rollback Transaction
+            return Redirect::back()->withInput()->withFlashDanger('DB::Error');
+        }
+        
+        DB::commit(); // Commit if no error
+        
+        Log::info('Se ha creado el siguiente nuevo departamento: '.$edit_puesto->nombre_puesto);
+        
+        return Redirect::route('admin.puestos.index')
+            ->withFlashInfo('Nuevo Puesto Agregado');        
     }
 
     /**
@@ -47,9 +102,15 @@ class PuestosController extends Controller
      * @param  \App\PuestoModel  $puestoModel
      * @return \Illuminate\Http\Response
      */
-    public function show(PuestoModel $puestoModel)
+    public function show(PuestoModel $puesto)
     {
-        //
+        $areas  = ListadosModel::Puesto_Area()->pluck('option','id');
+        $deptos = DeptoModel::pluck('nombre_depto','id');
+        
+        return view('backend.puestos.show')
+            ->withPuesto($puesto)
+            ->withDeptos($deptos)
+            ->withAreas($areas);
     }
 
     /**
@@ -58,9 +119,15 @@ class PuestosController extends Controller
      * @param  \App\PuestoModel  $puestoModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(PuestoModel $puestoModel)
+    public function edit(PuestoModel $puesto)
     {
-        //
+        $areas  = ListadosModel::Puesto_Area()->pluck('option','id');
+        $deptos = DeptoModel::pluck('nombre_depto','id');
+
+        return view('backend.puestos.edit')
+            ->withPuesto($puesto)
+            ->withDeptos($deptos)
+            ->withAreas($areas);
     }
 
     /**
@@ -70,9 +137,56 @@ class PuestosController extends Controller
      * @param  \App\PuestoModel  $puestoModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PuestoModel $puestoModel)
+    public function update(Request $request, $id)
     {
-        //
+         // validate
+         $rules = [
+            'nombre_puesto' => 'required',
+            'codigo_puesto' => 'required',
+            'experiencia_puesto' => 'required',
+            'salario_puesto' => 'required',
+            'depto_puesto' => 'required',
+            'descripcion_puesto' => 'required',            
+        ];
+
+        $Input = $request->all();
+        $validator = Validator::make($Input, $rules);
+
+        // process the store
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)->withInput();
+        }
+        
+         // Start transaction!
+        DB::beginTransaction();
+
+        // store
+        $edit_puesto = PuestoModel::findOrFail($id);
+        $edit_puesto->nombre_puesto = $request->nombre_puesto;
+        $edit_puesto->codigo_puesto = $request->codigo_puesto;
+        $edit_puesto->area_puesto = $request->area_puesto;
+        $edit_puesto->depto_puesto = $request->depto_puesto;
+        $edit_puesto->descripcion_puesto = $request->descripcion_puesto;
+        $edit_puesto->funciones_puesto = $request->funciones_puesto;
+        $edit_puesto->competencias_puesto = $request->competencias_puesto;
+        $edit_puesto->formacion_puesto = $request->formacion_puesto;
+        $edit_puesto->experiencia_puesto = $request->experiencia_puesto;
+        $edit_puesto->salario_puesto = $request->salario_puesto;
+        $edit_puesto->comentarios_puesto = $request->comentarios_puesto;
+        $edit_puesto->save();
+
+        if (! $edit_puesto) {
+            DB::rollback(); //Rollback Transaction
+            return Redirect::back()->withInput()->withFlashDanger('DB::Error');
+        }
+        
+        DB::commit(); // Commit if no error
+        
+        Log::info('Se ha editado el siguiente puesto: '.$edit_puesto->nombre_puesto);
+        
+        return Redirect::route('admin.puestos.index')
+            ->withFlashInfo('Puesto Actualizado');
     }
 
     /**
@@ -81,8 +195,11 @@ class PuestosController extends Controller
      * @param  \App\PuestoModel  $puestoModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PuestoModel $puestoModel)
+    public function destroy(PuestoModel $puesto)
     {
-        //
+        $puestonombre = $puesto->nombre_depto;
+        $puesto->delete();                
+        Log::info('Se ha eliminado el puesto: '.$puestonombre);
+        return redirect()->route('admin.puestos.index')->withFlashSuccess('El puesto ha sido eliminado.');
     }
 }

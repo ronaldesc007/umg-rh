@@ -17,7 +17,7 @@ class CreatePuestosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre_puesto');
             $table->string('codigo_puesto',10);
-            $table->string('area_puesto');
+            $table->integer('area_puesto');
             $table->unsignedBigInteger('depto_puesto');
             $table->text('descripcion_puesto');
             $table->text('funciones_puesto');

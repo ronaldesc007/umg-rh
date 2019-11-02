@@ -19,9 +19,9 @@ class CreateEmpleadosTable extends Migration
             $table->string('segundo_nombre_emp');
             $table->string('primer_apellido_emp');
             $table->string('segundo_apellido_emp');
-            $table->string('genero_emp');
+            $table->integer('genero_emp');
             $table->date('fecha_nacimiento_emp');
-            $table->string('estado_civil_emp');
+            $table->integer('estado_civil_emp');
             $table->string('direccion_emp');
             $table->string('direccion_adicional_emp');
             $table->string('telefono_emp');
