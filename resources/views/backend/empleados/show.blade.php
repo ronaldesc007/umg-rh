@@ -16,6 +16,17 @@
 
                 <div class="row mt-4 mb-4">
                     <div class="col">
+
+                        @if($puestos)
+                        <div class="form-group row">
+                            {{ html()->label('Puesto Actual')->class('col-md-2 form-control-label font-weight-bold')->for('puesto_emp') }}
+    
+                            <div class="col-md-4">
+                                <strong>{{ $puestos->codigo_puesto }} {{ $puestos->nombre_puesto }}</strong>
+                            </div><!--col-->
+                        </div><!--form-group-->
+                        @endif
+
                         <div class="form-group row">
                             {{ html()->label('Nombre')->class('col-md-2 form-control-label font-weight-bold')->for('primer_nombre_emp') }}
 
@@ -62,7 +73,7 @@
                         <div class="form-group row">
                             {{ html()->label('Fecha Nacimiento')->class('col-md-2 form-control-label font-weight-bold')->for('fecha_nacimiento_emp') }}
     
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 {{ html()->date('fecha_nacimiento_emp')
                                     ->class('form-control-plaintext')
                                     ->disabled()  }}
@@ -138,7 +149,10 @@
             <div class="card-footer clearfix">
                 <div class="row">
                     <div class="col">
-                        {{ form_cancel(route('admin.personal.index'), __('buttons.general.back'),'btn btn-warning btn-lg font-weight-bold') }}
+                        {{ form_cancel(route('admin.personal.index'), 'Ir a Empleados','btn btn-warning btn-lg font-weight-bold') }}
+                    </div><!--col-->
+                    <div class="col">
+                         <a href="{{ route('admin.candidatos.index') }}" class="btn btn-warning btn-lg font-weight-bold">Ir a Candidatos</a>
                     </div><!--col-->
                 </div><!--row-->
             </div><!--card-footer-->

@@ -1,13 +1,13 @@
 @extends('backend.layouts.app')
 
 @section('content')
-{{ html()->modelForm($empleado, 'PATCH', route('admin.personal.update', $empleado->id))->class('form-horizontal')->open() }}
+{{ html()->modelForm($empleado, 'POST', route('admin.personal.update', $empleado->id))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            Personal <small class="text-muted">Editar Personal</small>
+                            Personal <small class="text-muted">Ver Personal</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->
@@ -21,17 +21,14 @@
 
                             <div class="col-md-5">
                                 {{ html()->text('primer_nombre_emp')
-                                    ->class('form-control')
-                                    ->placeholder('Primer nombre')
-                                    ->attribute('maxlength', 250)
-                                    ->autofocus() }}
+                                    ->class('form-control-plaintext')
+                                    ->disabled() }}
                             </div><!--col-->
 
                             <div class="col-md-5">
                                 {{ html()->text('segundo_nombre_emp')
-                                    ->class('form-control')
-                                    ->placeholder('Segundo nombre')
-                                    ->attribute('maxlength', 250) }}
+                                    ->class('form-control-plaintext')
+                                    ->disabled() }}
                             </div><!--col-->
 
                         </div><!--form-group-->
@@ -41,16 +38,14 @@
 
                             <div class="col-md-5">
                                 {{ html()->text('primer_apellido_emp')
-                                    ->class('form-control')
-                                    ->placeholder('Primer apellido')
-                                    ->attribute('maxlength', 250) }}
+                                    ->class('form-control-plaintext')
+                                    ->disabled() }}
                             </div><!--col-->
 
                             <div class="col-md-5">
                                 {{ html()->text('segundo_apellido_emp')
-                                    ->class('form-control')
-                                    ->placeholder('Segundo apellido')
-                                    ->attribute('maxlength', 250) }}
+                                    ->class('form-control-plaintext')
+                                    ->disabled() }}
                             </div><!--col-->
 
                         </div><!--form-group-->
@@ -60,17 +55,17 @@
     
                             <div class="col-md-2">
                                 {{ html()->select('genero_emp',$generos)
-                                    ->class('form-control')
-                                    ->placeholder('Seleccione') }}
+                                    ->class('form-control-plaintext') }}
                             </div><!--col-->
                         </div><!--form-group-->
 
                         <div class="form-group row">
                             {{ html()->label('Fecha Nacimiento')->class('col-md-2 form-control-label font-weight-bold')->for('fecha_nacimiento_emp') }}
     
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 {{ html()->date('fecha_nacimiento_emp')
-                                    ->class('form-control') }}
+                                    ->class('form-control-plaintext')
+                                    ->disabled()  }}
                             </div><!--col-->
                         </div><!--form-group-->
 
@@ -79,8 +74,7 @@
     
                             <div class="col-md-2">
                                 {{ html()->select('estado_civil_emp',$estados)
-                                    ->class('form-control')
-                                    ->placeholder('Seleccione') }}
+                                    ->class('form-control-plaintext') }}
                             </div><!--col-->
                         </div><!--form-group-->
 
@@ -88,17 +82,13 @@
                             {{ html()->label('Dirección')->class('col-md-2 form-control-label font-weight-bold')->for('direccion_emp') }}
     
                                 <div class="col-md-4">
-                                    {{ html()->textarea('direccion_emp')
-                                        ->class('form-control')
-                                        ->placeholder('Dirección')
-                                        ->attribute('maxlength', 300) }}
+                                    {{ html()->span($empleado->direccion_emp)
+                                        ->class('form-control-plaintext') }}
                                 </div><!--col-->
 
                                 <div class="col-md-4">
-                                    {{ html()->textarea('direccion_adicional_emp')
-                                        ->class('form-control')
-                                        ->placeholder('Dirección adicional')
-                                        ->attribute('maxlength', 300) }}
+                                    {{ html()->span($empleado->direccion_adicional_emp)
+                                        ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
 
@@ -107,8 +97,8 @@
     
                                 <div class="col-md-4">
                                     {{ html()->text('telefono_emp')
-                                        ->class('form-control')
-                                        ->attribute('maxlength', 12) }}
+                                        ->class('form-control-plaintext')
+                                        ->disabled() }}
                                 </div><!--col-->
                         </div><!--form-group-->
 
@@ -117,8 +107,8 @@
     
                                 <div class="col-md-4">
                                     {{ html()->text('celular_emp')
-                                        ->class('form-control')
-                                        ->attribute('maxlength', 12) }}
+                                        ->class('form-control-plaintext')
+                                        ->disabled() }}
                                 </div><!--col-->
                         </div><!--form-group-->
 
@@ -127,8 +117,8 @@
     
                                 <div class="col-md-4">
                                     {{ html()->email('email_emp')
-                                        ->class('form-control')
-                                        ->attribute('maxlength', 100) }}
+                                        ->class('form-control-plaintext')
+                                        ->disabled() }}
                                 </div><!--col-->
                         </div><!--form-group-->
 
@@ -136,10 +126,8 @@
                             {{ html()->label('Comentarios')->class('col-md-2 form-control-label font-weight-bold')->for('comentarios_emp') }}
     
                                 <div class="col-md-10">
-                                    {{ html()->textarea('comentarios_emp')
-                                        ->class('form-control')
-                                        ->placeholder('Comentarios adicionales')
-                                        ->attribute('maxlength', 800) }}
+                                    {{ html()->span($empleado->comentarios_emp)
+                                        ->class('form-control-plaintext') }}
                                 </div><!--col-->
                         </div><!--form-group-->
 
@@ -150,11 +138,7 @@
             <div class="card-footer clearfix">
                 <div class="row">
                     <div class="col">
-                        {{ form_cancel(route('admin.personal.index'), __('buttons.general.cancel'),'btn btn-danger btn-lg font-weight-bold') }}
-                    </div><!--col-->
-
-                    <div class="col text-right">
-                        {{ form_submit(__('buttons.general.crud.edit'),'btn btn-success btn-lg font-weight-bold') }}
+                        {{ form_cancel(route('admin.personal.index'), __('buttons.general.back'),'btn btn-warning btn-lg font-weight-bold') }}
                     </div><!--col-->
                 </div><!--row-->
             </div><!--card-footer-->

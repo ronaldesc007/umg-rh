@@ -48,8 +48,7 @@
                                 {{ html()->text('encargado_depto')
                                     ->class('form-control')
                                     ->placeholder('Jefe de Departamento')
-                                    ->attribute('maxlength', 20)
-                                    ->required() }}
+                                    ->attribute('maxlength', 20) }}
                             </div><!--col-->
                         </div><!--form-group-->
 

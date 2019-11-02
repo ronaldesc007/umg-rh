@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            Personal <small class="text-muted">Agregar Personal</small>
+                            Candidato <small class="text-muted">Agregar Candidato</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->
@@ -16,17 +16,7 @@
 
                 <div class="row mt-4 mb-4">
                     <div class="col">
-
-                        <div class="form-group row">
-                            {{ html()->label('Puesto')->class('col-md-2 form-control-label font-weight-bold')->for('puesto_emp') }}
-    
-                            <div class="col-md-2">
-                                {{ html()->select('puesto_emp',$puestos)
-                                    ->class('form-control')
-                                    ->placeholder('Seleccione') }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
+                        
                         <div class="form-group row">
                             {{ html()->label('Nombre')->class('col-md-2 form-control-label font-weight-bold')->for('primer_nombre_emp') }}
 
@@ -79,7 +69,7 @@
                         <div class="form-group row">
                             {{ html()->label('Fecha Nacimiento')->class('col-md-2 form-control-label font-weight-bold')->for('fecha_nacimiento_emp') }}
     
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 {{ html()->date('fecha_nacimiento_emp')
                                     ->class('form-control') }}
                             </div><!--col-->

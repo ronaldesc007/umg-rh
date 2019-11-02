@@ -19,7 +19,15 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $empleados = EmpleadoModel::paginate(15);
+        
+        /*
+        $empleados = EmpleadoModel::whereNotIn('', function($query) {
+            $query->select('id_office')
+            ->from('warehouse_relation')
+            ->where('id_office', '=', session('sess_id_office'));
+        })->get();
+        */
+        $empleados = EmpleadoModel::where('puesto_emp','<>',null)->paginate(15);
         return view('backend.empleados.index')
             ->withEmpleados($empleados);
     }
@@ -97,10 +105,10 @@ class EmpleadosController extends Controller
         
         DB::commit(); // Commit if no error
         
-        Log::info('Se ha agregado al nuevo empleado: '.$new_emp->primer_nombre_emp.' '.$new_emp->primer_apellido_emp);
+        Log::info('Se ha agregado al nuevo candidato: '.$new_emp->primer_nombre_emp.' '.$new_emp->primer_apellido_emp);
         
-        return Redirect::route('admin.personal.index')
-            ->withFlashInfo('Nuevo Empleado Agregado');
+        return Redirect::route('admin.candidatos.index')
+            ->withFlashInfo('Nuevo Candidato Agregado');
     }
 
     /**
@@ -113,7 +121,7 @@ class EmpleadosController extends Controller
     {
         $generos  = ListadosModel::Generos()->pluck('option','id');
         $estados  = ListadosModel::Estado_Civil()->pluck('option','id');
-        $puestos  = PuestoModel::pluck('nombre_puesto','id');
+        $puestos  = PuestoModel::find($personal->puesto_emp);
 
         return view('backend.empleados.show')
             ->withEmpleado($personal)

@@ -81,11 +81,19 @@ class ListadosModel extends Model
             ],
             [
                 'id' => '5',
-                'option' => 'Contratación'
+                'option' => 'Contratado'
             ],
             [
                 'id' => '6',
-                'option' => 'No Contratación'
+                'option' => 'No Contratado'
+            ],
+            [
+                'id' => '7',
+                'option' => 'Despido'
+            ],
+            [
+                'id' => '8',
+                'option' => 'Renuncia'
             ]
         ]);
         return $collection;

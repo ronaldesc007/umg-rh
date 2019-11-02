@@ -1,13 +1,13 @@
 @extends('backend.layouts.app')
 
 @section('content')
-{{ html()->modelForm($empleado, 'PATCH', route('admin.personal.update', $empleado->id))->class('form-horizontal')->open() }}
+    {{ html()->form('POST', route('admin.personal.store'))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            Personal <small class="text-muted">Editar Personal</small>
+                            Personal <small class="text-muted">Agregar Personal</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->
@@ -16,6 +16,7 @@
 
                 <div class="row mt-4 mb-4">
                     <div class="col">
+                        
                         <div class="form-group row">
                             {{ html()->label('Nombre')->class('col-md-2 form-control-label font-weight-bold')->for('primer_nombre_emp') }}
 
@@ -68,7 +69,7 @@
                         <div class="form-group row">
                             {{ html()->label('Fecha Nacimiento')->class('col-md-2 form-control-label font-weight-bold')->for('fecha_nacimiento_emp') }}
     
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 {{ html()->date('fecha_nacimiento_emp')
                                     ->class('form-control') }}
                             </div><!--col-->
@@ -154,7 +155,7 @@
                     </div><!--col-->
 
                     <div class="col text-right">
-                        {{ form_submit(__('buttons.general.crud.edit'),'btn btn-success btn-lg font-weight-bold') }}
+                        {{ form_submit(__('buttons.general.crud.create'),'btn btn-success btn-lg font-weight-bold') }}
                     </div><!--col-->
                 </div><!--row-->
             </div><!--card-footer-->

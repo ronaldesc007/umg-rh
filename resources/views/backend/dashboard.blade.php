@@ -64,18 +64,6 @@
           <div class="col-xs-12 col-lg-4">
             <div class="card">
                 <div class="card-body p-0 d-flex align-items-center">
-                <i class="fa fa-project-diagram bg-success p-4 px-5 font-2xl mr-1"></i>
-                <div>
-                    <a href="{{ route('admin.contratacion.index') }}" class="btn stretched-link text-value-sm">Reclutamiento</a>
-                    <div class="text-muted text-uppercase font-weight-bold small"></div>
-                </div>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-xs-12 col-lg-4">
-            <div class="card">
-                <div class="card-body p-0 d-flex align-items-center">
                 <i class="fa fa-money-check-alt bg-success p-4 px-5 font-2xl mr-1"></i>
                 <div>
                     <a href="{{ route('admin.operacion.index') }}" class="btn stretched-link text-value-sm">Operaciones</a>

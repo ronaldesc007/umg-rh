@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\CandidatoModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator, DB, Log, Redirect;
+use App\EmpleadoModel;
+use App\PuestoModel;
+use App\ListadosModel;
+use App\DeptoModel;
 
 class CandidatosController extends Controller
 {
@@ -15,7 +20,9 @@ class CandidatosController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = EmpleadoModel::where('puesto_emp',null)->paginate(15);
+        return view('backend.empleados.index')
+            ->withEmpleados($empleados);
     }
 
     /**
@@ -47,7 +54,15 @@ class CandidatosController extends Controller
      */
     public function show(CandidatoModel $candidatoModel)
     {
-        //
+        $generos  = ListadosModel::Generos()->pluck('option','id');
+        $estados  = ListadosModel::Estado_Civil()->pluck('option','id');
+        $puestos  = PuestoModel::pluck('nombre_puesto','id');
+
+        return view('backend.empleados.show')
+            ->withEmpleado($personal)
+            ->withEstados($estados)    
+            ->withPuestos($puestos)
+            ->withGeneros($generos);
     }
 
     /**

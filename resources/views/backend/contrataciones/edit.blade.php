@@ -1,13 +1,13 @@
 @extends('backend.layouts.app')
 
 @section('content')
-{{ html()->modelForm($empleado, 'PATCH', route('admin.personal.update', $empleado->id))->class('form-horizontal')->open() }}
+{{ html()->modelForm($empleado, 'PATCH', route('admin.contratacion.update', $empleado->id))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            Personal <small class="text-muted">Editar Personal</small>
+                            Contratación <small class="text-muted">Iniciar Proceso</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->
@@ -16,6 +16,36 @@
 
                 <div class="row mt-4 mb-4">
                     <div class="col">
+
+                        <div class="form-group row">
+                            {{ html()->label('Seleccione el puesto a asignar')->class('col-md-2 form-control-label font-weight-bold')->for('puesto_emp') }}
+    
+                            <div class="col-md-4">
+                                {{ html()->select('puesto_emp',$puestos)
+                                    ->class('form-control')
+                                    ->placeholder('Seleccione') }}
+                            </div><!--col-->
+                        </div><!--form-group-->
+
+                        <div class="form-group row">
+                                {{ html()->label('Seleccione la etapa del proceso')->class('col-md-2 form-control-label font-weight-bold')->for('puesto_emp') }}
+        
+                            <div class="col-md-4">
+                                {{ html()->select('etapa_cont',$procesos)
+                                    ->class('form-control')
+                                    ->placeholder('Seleccione') }}
+                            </div><!--col-->
+                        </div><!--form-group-->
+
+                        <div class="form-group row">
+                                {{ html()->label('Fecha Inicio Labores')->class('col-md-2 form-control-label font-weight-bold')->for('fecha_inicio_cont') }}
+        
+                                <div class="col-md-4">
+                                    {{ html()->date('fecha_inicio_cont')
+                                        ->class('form-control') }}
+                                </div><!--col-->
+                            </div><!--form-group-->
+
                         <div class="form-group row">
                             {{ html()->label('Nombre')->class('col-md-2 form-control-label font-weight-bold')->for('primer_nombre_emp') }}
 
@@ -150,11 +180,11 @@
             <div class="card-footer clearfix">
                 <div class="row">
                     <div class="col">
-                        {{ form_cancel(route('admin.personal.index'), __('buttons.general.cancel'),'btn btn-danger btn-lg font-weight-bold') }}
+                        {{ form_cancel(route('admin.candidatos.index'), __('buttons.general.cancel'),'btn btn-danger btn-lg font-weight-bold') }}
                     </div><!--col-->
 
                     <div class="col text-right">
-                        {{ form_submit(__('buttons.general.crud.edit'),'btn btn-success btn-lg font-weight-bold') }}
+                        {{ form_submit(__('buttons.general.crud.create'),'btn btn-success btn-lg font-weight-bold') }}
                     </div><!--col-->
                 </div><!--row-->
             </div><!--card-footer-->
